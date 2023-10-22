@@ -3,7 +3,7 @@ project(DataStructure_Lab1_)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(labR1_DataStructure main.cpp
+add_executable(DataStructure_Lab1_ main.cpp
         HashMap/hashMap.h
         HashMap/hashMap.cpp
         BinarySearchTree/BinarySearchTree.h

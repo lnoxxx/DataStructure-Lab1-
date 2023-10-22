@@ -101,6 +101,6 @@ void deleteByAddressSingleList (SingleListNode*& address){
         return;
     }
     SingleListNode* deletedNode = address->next;
-    delete address->next;
     address->next = deletedNode->next;
+    delete deletedNode;
 }
