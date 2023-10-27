@@ -2,11 +2,8 @@
 
 #include <iostream>
 
-//узел списка
 struct SingleListNode{
-    //значение
     int data;
-    //следующий элемент
     SingleListNode* next;
 };
 

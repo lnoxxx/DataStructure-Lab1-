@@ -5,8 +5,6 @@
 #include "Array/Array.h"
 
 void hashTableTest(){
-    // ПРОВЕРКА ХЭШ ТАБИЛЦЫ------------------------
-
     //создадим хэш таблицу
     auto table = createHashMapTable();
 
@@ -40,9 +38,7 @@ void hashTableTest(){
     std::cout<<"-----"<<std::endl;
 }
 
-void binarySearchTreeTest(){\
-    //ПРОВЕРКА ДЕРЕВА------------------------------
-
+void binarySearchTreeTest(){
     //создадим пустой head
     TreeNode* head = nullptr;
 
@@ -171,20 +167,13 @@ void arrayTest(){
 }
 
 int main() {
-
-    //проверка хэш таблицы
     hashTableTest();
 
-    // проверка бинарного дерева поиска
     binarySearchTreeTest();
 
-    // проверка односвязного списка (по совместительству стека)
     singlyListTest();
 
-    // проверка двусветного списка (по совместительству очереди)
     doubleLinkedListTest();
 
-    //проверка массива
     arrayTest();
-
 }
