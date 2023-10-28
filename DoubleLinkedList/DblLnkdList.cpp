@@ -106,9 +106,17 @@ int dequeueDoubleList(DLList& list){
         std::cout << "list empty" << std::endl;
         return 0;
     }
-    NodeDoubleList* dequeueNode = list.tail;
-    list.tail = dequeueNode->prev;
-    dequeueNode->prev->next = nullptr;
+    NodeDoubleList* dequeueNode = list.head;
+    if (list.tail == dequeueNode){
+        int result = dequeueNode->data;
+        delete dequeueNode;
+        list.head = nullptr;
+        list.tail = nullptr;
+        list.size--;
+        return result;
+    }
+    list.head = dequeueNode->next;
+    dequeueNode->next->prev = nullptr;
     int result = dequeueNode->data;
     delete dequeueNode;
     list.size--;

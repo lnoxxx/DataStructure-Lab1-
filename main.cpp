@@ -50,6 +50,8 @@ void binarySearchTreeTest(){
     insertTree(head,12);
     insertTree(head,25);
 
+    PrintBT(head,0);
+
     //удалим значение 15
     removeTreeNodeByData(head,15);
 
@@ -60,16 +62,7 @@ void binarySearchTreeTest(){
     std::cout << TreeMaxNode(head)->data << " ";
     std::cout << TreeMinNode(head)->data << std::endl;
 
-    // проверка значений дерева
-    std::cout << "\t\t   " <<head->data << std::endl;
-    std::cout << "\t\t  " << head->left->data << " ";
-    std::cout << head->right->data << std::endl;
-    std::cout << "\t\t" <<head->left->left->data << " ";
-    //вывод указателя, чтобы показать, что мы удалили узел
-    std::cout << head->left->right << "   ";
-    std::cout << head->right->right->data << std::endl;
-
-    std::cout<<"-----"<<std::endl;
+    PrintBT(head,0);
 }
 
 void singlyListTest(){
@@ -164,6 +157,9 @@ void arrayTest(){
     //удаляем 5 элемент
     removeByIndex(array,5);
     printArray(array);
+
+    std::cout << array->size << std::endl;
+    std::cout << array->array[3] << std::endl;
 }
 
 int main() {
