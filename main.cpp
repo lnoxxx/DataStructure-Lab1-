@@ -60,8 +60,8 @@ void binarySearchTreeTest(){
     std::cout << searchTree(head,25)->parent->data << std::endl;
 
     //найдем min и max элементы дерева
-    //std::cout << TreeMaxNode(head)->data << " ";
-    //std::cout << TreeMinNode(head)->data << std::endl;
+    std::cout << TreeMaxNode(head)->data << " ";
+    std::cout << TreeMinNode(head)->data << std::endl;
 
     PrintBT(head,0);
 }
@@ -145,17 +145,17 @@ void arrayTest(){
     initialize(arr, 5);
 
     push_back(arr, "1");
-    push_back(arr, "2");
-    push_back(arr, "3");
+    push_back(arr, "5");
+    push_back(arr, "10");
     printArray(arr);
 
     getByIndex(arr, 1);
     getByIndex(arr, 15);
 
-    addIndex(arr, 1, "10");
+    addIndex(arr, 2, "15");
     printArray(arr);
 
-    deleteIndex(arr, 2);
+    deleteIndex(arr, 1);
     printArray(arr);
 
     search(arr, "10");
