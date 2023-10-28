@@ -135,3 +135,14 @@ void removeTreeNodeByData(TreeNode* head, int data){
     removeTreeNode(deletedNode);
 }
 
+void PrintBT(TreeNode* head, int depth) {
+    if (head == nullptr){
+        return;
+    }
+    PrintBT(head->right, depth + 1);
+    for (int i = 0; i < depth; i++) {
+        std::cout << "   ";
+    }
+    std::cout << head->data << std::endl;
+    PrintBT(head->left, depth + 1);
+}

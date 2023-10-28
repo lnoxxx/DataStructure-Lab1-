@@ -19,3 +19,4 @@ TreeNode* TreeMaxNode(TreeNode* head);
 TreeNode* TreeMinNode(TreeNode* head);
 void removeTreeNode(TreeNode*& deletedNode);
 void removeTreeNodeByData(TreeNode* head, int data);
+void PrintBT(TreeNode* head, int depth);
