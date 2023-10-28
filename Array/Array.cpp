@@ -1,58 +1,88 @@
 #include "Array.h"
 
-//функция создания массива
-array* createArray(){
-    auto* arr = new array;
-    arr->array = new int[5];
-    arr->size = 5;
-    for (int k = 0; k<arr->size;k++){
-        arr->array[k] = 0;
-    }
-    return arr;
+//инициализация
+void initialize(Array& list, int initialCapacity) {
+    list.capacity = initialCapacity;
+    list.size = 0;
+    list.array = new std::string[list.capacity];
 }
 
-//функция вывода массива
-void printArray(array* arr){
-    for (int k = 0; k<arr->size;k++){
-        std::cout << arr->array[k] << " ";
+//пуш бек
+void push_back(Array& list, const std::string& value) {
+    if (list.size == list.capacity) {
+        int newCapacity = list.capacity + 5;
+        auto* newArray = new std::string[newCapacity];
+        for (int i = 0; i < list.size; i++) {
+            newArray[i] = list.array[i];
+        }
+        delete[] list.array;
+        list.array = newArray;
+        list.capacity = newCapacity;
+    }
+    list.array[list.size] = value;
+    list.size++;
+}
+
+void addIndex(Array& list, int index, const std::string& value) {
+    if (index < 0 || index > list.size) {
+        std::cout << "Invalid index" << std::endl;
+        return;
+    }
+    if (list.size == list.capacity) {
+        int newCapacity = list.capacity * 2;
+        auto* newArray = new std::string[newCapacity];
+
+        for (int i = 0; i < list.size; i++) {
+            newArray[i] = list.array[i];
+        }
+
+        delete[] list.array;
+        list.array = newArray;
+        list.capacity = newCapacity;
+    }
+    for (int i = list.size; i > index; i--) {
+        list.array[i] = list.array[i - 1];
+    }
+    list.array[index] = value;
+    list.size++;
+}
+
+void deleteIndex(Array& list, int index) {
+    if (index < 0 || index >= list.size) {
+        std::cout << "Invalid index" << std::endl;
+        return;
+    }
+    if (index == list.size){
+        list.size--;
+    }
+    for (int i = index; i < list.size - 1; i++) {
+        list.array[i] = list.array[i + 1];
+    }
+    list.size--;
+}
+
+void search(const Array& list, const std::string& value) {
+    for (int i = 0; i < list.size; i++) {
+        if (list.array[i] == value) {
+            std::cout << "find" << std::endl;
+            return;
+        }
+    }
+    std::cout << "dont find" << std::endl;
+}
+
+void getByIndex(const Array& list, const int index) {
+    if (index>=0 && index<=list.size) {
+        std::cout << list.array[index] << std::endl;
+    }
+    else {
+        std::cout <<"No such element" << std::endl;
+    }
+}
+
+void printArray(const Array& list) {
+    for (int i = 0; i < list.size; i++) {
+        std::cout << list.array[i] << " ";
     }
     std::cout << std::endl;
 }
-
-//изменение элемента - O(1)
-//добавление нового элемента O(n) (если не считать заполнение нулями)
-void addChangeByIndex(array* arr, const int& index, const int& data){
-    if (index < 0) return;
-    if(arr->size <= index){
-        int* newArr = new int[index+1];
-        for (int k = 0; k<index+1;k++){
-            newArr[k] = 0;
-        }
-        for (int k = 0; k<arr->size;k++){
-            newArr[k] = arr->array[k];
-        }
-        newArr[index] = data;
-        delete[] arr->array;
-        arr->array = newArr;
-        arr->size = index+1;
-    }else{
-        arr->array[index] = data;
-    }
-}
-
-//удаление O(n-1)
-void removeByIndex (array* arr,const int& index){
-    if (index >= arr->size || index < 0) return;
-    int* newArr = new int[arr->size-1];
-    for (int k = 0; k<index;k++){
-        newArr[k] = arr->array[k];
-    }
-    for (int k=index+1;k<arr->size;k++){
-        newArr[k-1] = arr->array[k];
-    }
-    delete[] arr->array;
-    arr->array = newArr;
-    arr->size--;
-}
-
-

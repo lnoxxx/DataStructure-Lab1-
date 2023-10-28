@@ -4,6 +4,7 @@
 #include "DoubleLinkedList/DblLnkdList.h"
 #include "Array/Array.h"
 
+
 void hashTableTest(){
     //создадим хэш таблицу
     auto table = createHashMapTable();
@@ -59,8 +60,8 @@ void binarySearchTreeTest(){
     std::cout << searchTree(head,25)->parent->data << std::endl;
 
     //найдем min и max элементы дерева
-    std::cout << TreeMaxNode(head)->data << " ";
-    std::cout << TreeMinNode(head)->data << std::endl;
+    //std::cout << TreeMaxNode(head)->data << " ";
+    //std::cout << TreeMinNode(head)->data << std::endl;
 
     PrintBT(head,0);
 }
@@ -140,26 +141,25 @@ void doubleLinkedListTest(){
 }
 
 void arrayTest(){
-    //создаем новый массив
-    auto* array = createArray();
-    printArray(array);
+    Array arr{};
+    initialize(arr, 5);
 
-    //заполняем какими то значениями
-    for (int k=0;k<9;k++){
-        addChangeByIndex(array,k,k*2);
-    }
-    printArray(array);
+    push_back(arr, "1");
+    push_back(arr, "2");
+    push_back(arr, "3");
+    printArray(arr);
 
-    //изменяем значение 2 элемента
-    addChangeByIndex(array,2,1);
-    printArray(array);
+    getByIndex(arr, 1);
+    getByIndex(arr, 15);
 
-    //удаляем 5 элемент
-    removeByIndex(array,5);
-    printArray(array);
+    addIndex(arr, 1, "10");
+    printArray(arr);
 
-    std::cout << array->size << std::endl;
-    std::cout << array->array[3] << std::endl;
+    deleteIndex(arr, 2);
+    printArray(arr);
+
+    search(arr, "10");
+    search(arr, "50");
 }
 
 int main() {
